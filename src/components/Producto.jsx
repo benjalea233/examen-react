@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import { Component } from "react";
+import { Link } from "react-router-dom";
 
 //componente de clase hijo: renderiza un producto y su boton
 //recibe por props: producto, cantidadEnCArrito y onAgregar (callback del padre)
@@ -20,6 +21,8 @@ class Producto extends Component {
                 <strong>${producto.precio.toLocaleString("es-CL")}</strong>
                 <div>
                     <button onClick={this.manejarClick}>Agregar al Carrito</button>
+                        {" "}
+                        <Link to={`/producto/${producto.id}`}>Ver detalle</Link>
                 </div>
                 {/* renderizado condicional: solo se muestra si hay unidades en el carrito */}
                 {cantidadEnCarrito > 0 && (

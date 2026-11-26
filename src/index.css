@@ -38,3 +38,22 @@ body {
   border-radius: 4px;
   vertical-align: middle;
 }
+
+.navegacion {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ccc;
+}
+
+.navegacion a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.imagen-detalle {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 8px;
+}
