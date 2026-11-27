@@ -6,6 +6,7 @@ function Navbar() {
         <nav className="nevagacion">
             <NavLink to="/">Inicio</NavLink>
             <NavLink to="/tienda">Tienda</NavLink>
+            <NavLink to="/formulario">Contacto</NavLink>
         </nav>
     );
 }

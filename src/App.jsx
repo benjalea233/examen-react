@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import DetalleProducto from "./pages/DetalleProducto";
+import Formulario from "./pages/Formulario";
 import Inicio from "./pages/Inicio";
 import NoEncontrado from "./pages/NoEncontrado";
 import Tienda from "./pages/Tienda";
@@ -13,6 +14,7 @@ function App() {
         {/*rutas sin parametros*/}
         <Route path="/" element={<Inicio />} />
         <Route path="/Tienda" element={<Tienda />} />
+        <Route path="/formulario" element={<Formulario />} />
 
         {/*rutas con parametros*/}
         <Route path="/producto/:id" element={<DetalleProducto />} />
