@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import productos from "../data/productos";
-import Producto from "./Producto";
 import Carrito from "./Carrito";
+import Producto from "./Producto";
 
 // componente de clase padre: guarda el estado (productos y carrito)
 // y tmbn define los métodos que los hijos invocan mediante callback
@@ -68,27 +68,32 @@ class ListaProductos extends Component {
         const { productos, carrito } = this.state;
 
         return (
-            <div className="contenedor-tienda">
-                <div className="lista-productos">
-                    {/* map(): un componente hijo por cada producto, con su key única */}
-                    {productos.map((producto) => {
-                        const enCarrito = carrito.find((i) => i.id === producto.id);
-                        return (
-                            <Producto
-                                key={producto.id}
-                                producto={producto}
-                                cantidadEnCarrito={enCarrito ? enCarrito.cantidad : 0}
-                                onAgregar={this.agregarAlCarrito}
-                            />
-                        );
-                    })}
+            <div className="row g-4">
+                <div className="col-lg-8">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {/* map(): un hijo por producto; la key va en el elemento más externo del map */}
+                        {productos.map((producto) => {
+                            const enCarrito = carrito.find((i) => i.id === producto.id);
+                            return (
+                                <div className="col" key={producto.id}>
+                                    <Producto
+                                        producto={producto}
+                                        cantidadEnCarrito={enCarrito ? enCarrito.cantidad : 0}
+                                        onAgregar={this.agregarAlCarrito}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
 
-                <Carrito
-                    items={carrito}
-                    onQuitar={this.quitarDelCarrito}
-                    onVaciar={this.vaciarCarrito}
-                />
+                <div className="col-lg-4">
+                    <Carrito
+                        items={carrito}
+                        onQuitar={this.quitarDelCarrito}
+                        onVaciar={this.vaciarCarrito}
+                    />
+                </div>
             </div>
         );
     }

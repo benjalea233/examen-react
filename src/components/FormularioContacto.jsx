@@ -77,105 +77,112 @@ function FormularioContacto({ onEnviar }) {
 
     return (
         <form onSubmit={manejarSubmit} noValidate>
-            <div className="campo">
-            <label htmlFor="nombre">Nombre</label>
-            <input
-                id="nombre"
-                name="nombre"
-                type="text"
-                value={datos.nombre}
-                onChange={manejarCambio}
-                onBlur={alSalir("nombre")}
-            />
-            <div className="error">
-                {validador.current.message("nombre", datos.nombre.trim(), "required|alpha_space")}
-            </div>
-        </div>
-
-        <div className="campo">
-            <label htmlFor="correo">Correo electrónico</label>
-            <input
-                id="correo"
-                name="correo"
-                type="email"
-                value={datos.correo}
-                onChange={manejarCambio}
-                onBlur={alSalir("correo")}
-            />
-            <div className="error">
-                {validador.current.message("correo", datos.correo.trim(), "required|email")}
-            </div>
-        </div>
-
-        <div className="campo">
-            <label htmlFor="telefono">Teléfono</label>
-            <input
-                id="telefono"
-                name="telefono"
-                type="tel"
-                placeholder="+56 9 1234 5678"
-                value={datos.telefono}
-                onChange={manejarCambio}
-                onBlur={alSalir("telefono")}
-            />
-            <div className="error">
-                {validador.current.message("telefono", datos.telefono.trim(), "required|telefonoChile")}
-            </div>
-        </div>
-
-        <div className="campo">
-            <label htmlFor="asunto">Asunto</label>
-            <select
-                id="asunto"
-                name="asunto"
-                value={datos.asunto}
-                onChange={manejarCambio}
-                onBlur={alSalir("asunto")}
-            >
-                <option value="">Selecciona una opción</option>
-                <option value="Consulta">Consulta</option>
-                <option value="Reclamo">Reclamo</option>
-                <option value="Sugerencia">Sugerencia</option>
-            </select>
-            <div className="error">
-                {validador.current.message("asunto", datos.asunto, "required")}
-            </div>
-        </div>
-
-        <div className="campo">
-            <label htmlFor="mensaje">Mensaje</label>
-            <textarea
-                id="mensaje"
-                name="mensaje"
-                rows="4"
-                value={datos.mensaje}
-                onChange={manejarCambio}
-                onBlur={alSalir("mensaje")}
-            />
-            <small>{datos.mensaje.trim().length} caracteres (mínimo 10)</small>
-            <div className="error">
-                {validador.current.message("mensaje", datos.mensaje.trim(), "required|min:10")}
-            </div>
-        </div>
-
-        <div className="campo">
-            <label>
+            <div className="mb-3">
+                <label htmlFor="nombre" className="form-label">Nombre</label>
                 <input
+                    id="nombre"
+                    name="nombre"
+                    type="text"
+                    className="form-control"
+                    value={datos.nombre}
+                    onChange={manejarCambio}
+                    onBlur={alSalir("nombre")}
+                />
+                <div className="text-danger small">
+                    {validador.current.message("nombre", datos.nombre.trim(), "required|alpha_space")}
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="correo" className="form-label">Correo electrónico</label>
+                    <input
+                        id="correo"
+                        name="correo"
+                        type="email"
+                        className="form-control"
+                        value={datos.correo}
+                        onChange={manejarCambio}
+                        onBlur={alSalir("correo")}
+                    />
+                <div className="text-danger small">
+                    {validador.current.message("correo", datos.correo.trim(), "required|email")}
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="telefono" className="form-label">Teléfono</label>
+                <input
+                    id="telefono"
+                    name="telefono"
+                    type="tel"
+                    className="form-control"
+                    placeholder="+56 9 1234 5678"
+                    value={datos.telefono}
+                    onChange={manejarCambio}
+                    onBlur={alSalir("telefono")}
+                />
+                <div className="text-danger small">
+                    {validador.current.message("telefono", datos.telefono.trim(), "required|telefonoChile")}
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="asunto" className="form-label">Asunto</label>
+                <select
+                    id="asunto"
+                    name="asunto"
+                    className="form-select"
+                    value={datos.asunto}
+                    onChange={manejarCambio}
+                    onBlur={alSalir("asunto")}
+                >
+                    <option value="">Selecciona una opción</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Reclamo">Reclamo</option>
+                    <option value="Sugerencia">Sugerencia</option>
+                </select>
+                <div className="text-danger small">
+                    {validador.current.message("asunto", datos.asunto, "required")}
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="mensaje" className="form-label">Mensaje</label>
+                <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    rows="4"
+                    className="form-control"
+                    value={datos.mensaje}
+                    onChange={manejarCambio}
+                    onBlur={alSalir("mensaje")}
+                />
+                <div className="form-text">{datos.mensaje.trim().length} caracteres (mínimo 10)</div>
+                <div className="text-danger small">
+                    {validador.current.message("mensaje", datos.mensaje.trim(), "required|min:10")}
+                </div>
+            </div>
+
+            <div className="mb-3 form-check">
+                <input
+                    id="terminos"
                     name="terminos"
                     type="checkbox"
+                    className="form-check-input"
                     checked={datos.terminos}
                     onChange={manejarCambio}
-                />{" "}
-                Acepto los términos y condiciones
-            </label>
-            <div className="error">
-                {validador.current.message("terminos", datos.terminos, "accepted")}
+                />
+                <label htmlFor="terminos" className="form-check-label">
+                    Acepto los términos y condiciones
+                </label>
+                <div className="text-danger small">
+                    {validador.current.message("terminos", datos.terminos, "accepted")}
+                </div>
             </div>
-        </div>
 
-        <button type="submit" disabled={enviando}>
-            {enviando ? "Enviando..." : "Enviar"}
-        </button>
+            <button type="submit" className="btn btn-primary w-100" disabled={enviando}>
+                {enviando ? "Enviando..." : "Enviar"}
+            </button>
         </form>
     );
 };

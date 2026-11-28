@@ -10,18 +10,20 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        {/*rutas sin parametros*/}
-        <Route path="/" element={<Inicio />} />
-        <Route path="/Tienda" element={<Tienda />} />
-        <Route path="/formulario" element={<Formulario />} />
+      <main className="container pb-5">
+        <Routes>
+          {/*rutas sin parametros*/}
+          <Route path="/" element={<Inicio />} />
+          <Route path="/Tienda" element={<Tienda />} />
+          <Route path="/formulario" element={<Formulario />} />
 
-        {/*rutas con parametros*/}
-        <Route path="/producto/:id" element={<DetalleProducto />} />
+          {/*rutas con parametros*/}
+          <Route path="/producto/:id" element={<DetalleProducto />} />
 
-        {/*ruta comodin*/}
-        <Route path="*" element={<NoEncontrado />} />
-      </Routes>
+          {/*ruta comodin*/}
+          <Route path="*" element={<NoEncontrado />} />
+        </Routes>
+      </main>
     </div>
   );
 }

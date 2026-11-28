@@ -25,11 +25,17 @@ function Formulario() {
     };
 
     return (
-        <div>
-            <h1>Contacto</h1>
-            {mensajeExito && <p className="exito">{mensajeExito}</p>}
-            {error && <p className="error">{error}</p>}
-            <FormularioContacto onEnviar={manejarEnvio} />
+        <div className="row justify-content-center">
+            <div className="col-md-8 col-lg-6">
+                <h1 className="mb-4">Contacto</h1>
+                {mensajeExito && <div className="alert alert-success">{mensajeExito}</div>}
+                {error && <div className="alert alert-danger">{error}</div>}
+                <div className="card shadow-sm">
+                    <div className="card-body">
+                        <FormularioContacto onEnviar={manejarEnvio} />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
