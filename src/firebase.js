@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // la configuracion se lee desde las variables de entorno
@@ -15,3 +16,6 @@ const app = initializeApp(firebaseConfig);
 
 // base de datos en firestore para los formularios
 export const db = getFirestore(app);
+
+// autenticación de usuarios: correo y contraseña
+export const auth = getAuth(app);
